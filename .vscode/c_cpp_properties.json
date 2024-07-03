@@ -8,10 +8,10 @@
         "/usr/include/gz/**"
       ],
       "defines": [],
-      "compilerPath": "/usr/bin/gcc",
+      "compilerPath": "/usr/bin/clang",
       "cStandard": "c99",
       "cppStandard": "c++20",
-      "intelliSenseMode": "linux-gcc-x64"
+      "intelliSenseMode": "clang-x64"
     }
   ],
   "version": 4
