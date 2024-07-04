@@ -46,7 +46,7 @@ auto main() -> int
     std::cout << "Received POSITION packet with value: " << libreach::deserialize<float>(packet) << "\n";
   });
 
-  // Request POSITION data at 10 Hz for joint A
+  // Request POSITION data at 10 Hz from joint A
   driver.request_at_rate(
     libreach::PacketId::POSITION,
     static_cast<std::uint8_t>(libreach::Alpha5DeviceId::JOINT_A),

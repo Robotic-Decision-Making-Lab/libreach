@@ -23,6 +23,7 @@
 // ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <iostream>
+#include <mutex>
 #include <string>
 
 #include "libreach/device_id.hpp"
@@ -69,8 +70,11 @@ auto main() -> int
 
   // Print out the joint positions
   while (true) {
-    for (std::size_t i = 0; i < joint_positions.size(); ++i) {
-      std::cout << "Joint " << i + 1 << " position: " << joint_positions[i] << "\n";
+    {
+      const std::lock_guard<std::mutex> lock(m);
+      for (std::size_t i = 0; i < joint_positions.size(); ++i) {
+        std::cout << "Joint " << i + 1 << " position: " << joint_positions[i] << "\n";
+      }
     }
 
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
