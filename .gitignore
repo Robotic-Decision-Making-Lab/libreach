@@ -1,7 +1,10 @@
 # ROS 2
-build
-install
-log
+build/
+install/
+log/
 
 # virtualenv
 .venv
+
+# VS Code
+.vscode/
