@@ -19,7 +19,7 @@ jobs:
         run: sudo apt-get install clang-18
 
       - name: Build project
-        run: cmmake -S . -B build && cmake --build build
+        run: cmake -S . -B build && cmake --build build
 
       - name: Run clang-tidy checks
         uses: cpp-linter/cpp-linter-action@v2
