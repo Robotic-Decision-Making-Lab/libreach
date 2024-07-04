@@ -15,8 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install clang-18
-        run: sudo apt-get install clang-18
+      - name: Install build dependencies
+        run: sudo apt-get install cmake libboost-all-dev
 
       - name: Build project
         run: cmake -S . -B build && cmake --build build
