@@ -1,2 +1,2 @@
 [codespell]
-ignore-words-list = libreach
+ignore-words-list = libreach,colcon

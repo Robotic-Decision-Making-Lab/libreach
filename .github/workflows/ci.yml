@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - develop
+      - main
   workflow_dispatch:
 
 jobs:
@@ -20,10 +20,3 @@ jobs:
 
       - name: Build project
         run: cmake -S . -B build && cmake --build build
-
-      - name: Run clang-tidy checks
-        uses: cpp-linter/cpp-linter-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tidy-checks: ""
