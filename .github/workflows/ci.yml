@@ -1,0 +1,29 @@
+name: Continuous Integration (CI)
+
+on:
+  pull_request:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  pre-commit:
+    name: CI
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install clang-18
+        run: sudo apt-get install clang-18
+
+      - name: Build project
+        run: cmmake -S . -B build && cmake --build build
+
+      - name: Run clang-tidy checks
+        uses: cpp-linter/cpp-linter-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tidy-checks: ""
