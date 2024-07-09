@@ -1,38 +1,39 @@
-# ROS 2 Project Template
+# libreach
 
-Setting up a new ROS 2 project often requires a significant amount of
-preparation and boilerplate configuration, costing you valuable robot
-development time 🤖. Recognizing this, we have put together this template
-repository configured with a ROS 2 development environment, continuous
-integration, and more. This project is the result of much trial and error
-across many projects, and we hope that this helps you save some effort in
-setting up your own projects.
+libreach is a C++ library designed to interface with [Reach Robotics](https://reachrobotics.com/)
+devices. Get started with libreach by installing the project or by exploring
+the implemented [examples](https://github.com/Robotic-Decision-Making-Lab/libreach/tree/main/examples).
 
-## Features
+> :warning: This project is not affiliated with or maintained by Reach Robotics.
+> Please refer to the [Reach Robotics SDK](https://github.com/Reach-Robotics/reach_robotics_sdk/tree/master)
+> for all official software.
 
-The main features of this template are:
+## Dependencies
 
-- A development environment for Visual Studio Code including a [development container](https://code.visualstudio.com/docs/devcontainers/containers)
-and configurations for linting and auto-formatting your code
-- Docker images that support deployment to a variety of systems (e.g., arm64
-systems)
-- Continuous integration and deployment pipelines using GitHub Actions
-- GitHub Issue and Pull Request templates
+libreach depends on [Boost](https://www.boost.org/). Please verify that Boost
+has been installed prior to installing this project.
 
-## Quick start
+## Installation
 
-Using this template is as easy as 1, 2, 3...
+To install libreach, first build the library using CMake
 
-1. Use this repository [as a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
-for your project
-2. Replace all instances of "ros2-template" with your own project's name
-3. Replace the source code with your own project!
+```bash
+cmake -S . -B build && \
+cmake --build build
+```
 
-Feel free to remove any unused configurations/pipelines and to adjust things as
-you see fit for your project!
+Then, install the generated binary tree
+
+```bash
+cmake --install build
+```
 
 ## Getting help
 
-If you have questions regarding usage of this project or would like to
-contribute, please ask a question on our [Discussions](https://github.com/Robotic-Decision-Making-Lab/ros2-template/discussions)
-board!
+If you have questions regarding usage of libreach or regarding contributing to
+this project, please ask a question on our [Discussions](https://github.com/Robotic-Decision-Making-Lab/libreach/discussions)
+board.
+
+## License
+
+libreach is released under the Reach Robotics [software license](https://github.com/Reach-Robotics/reach_robotics_sdk/blob/master/LICENSE.txt).
