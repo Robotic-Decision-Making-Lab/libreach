@@ -31,14 +31,13 @@
 #include "libreach/packet_id.hpp"
 #include "libreach/serial_driver.hpp"
 
-/// This example provides a minimal demonstration of how to use the serial driver to communicate with an Alpha 5.
+/// This example demonstrates how to use the serial driver to communicate with an Alpha 5 manipulator.
 auto main() -> int
 {
-  // Set to the serial port for the Alpha 5; make sure to update this to the correct port and to set read/write
-  // permissions.
+  // Set to the serial port for the Alpha 5; make sure to update this, if necessary
   const std::string serial_port = "/dev/ttyUSB0";
 
-  // Create a new serial driver for the Alpha 5
+  // Create a new serial driver for the Alpha 5; connection will be attempted on construction
   libreach::SerialDriver driver(serial_port);
 
   // Register a callback for the POSITION packet

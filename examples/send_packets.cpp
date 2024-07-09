@@ -31,7 +31,7 @@
 #include "libreach/packet_id.hpp"
 #include "libreach/serial_driver.hpp"
 
-// This example demonstrates the different ways to send packets to a robot using libreach.
+// This example demonstrates the different approaches to sending packets to a robot using libreach.
 // WARNING: This will set the joint position of joint A. Verify that the joint is clear of obstacles before running.
 auto main() -> int
 {

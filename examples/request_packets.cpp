@@ -31,7 +31,7 @@
 #include "libreach/packet_id.hpp"
 #include "libreach/serial_driver.hpp"
 
-/// This example demonstrates ways that packets can be requested from a robot using libreach.
+/// This example demonstrates the different approaches that can be taken to request data from a manipulator.
 auto main() -> int
 {
   const std::string serial_port = "/dev/ttyUSB0";

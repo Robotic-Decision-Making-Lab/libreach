@@ -32,7 +32,7 @@
 #include "libreach/packet_id.hpp"
 #include "libreach/serial_driver.hpp"
 
-/// This example demonstrates how to configure multiple worker threads for processing incoming packets. This
+/// This example demonstrates how to configure multiple worker threads for processing incoming packets. A multi-worker
 /// configuration can be helpful when processing a large number of packets or when callbacks are computationally
 /// expensive.
 auto main() -> int
@@ -46,7 +46,6 @@ auto main() -> int
   // Modify this value as needed based on the expected number of incoming packets.
   const std::size_t q_size = 100;
 
-  // Create a new serial driver for the Alpha 5
   libreach::SerialDriver driver(serial_port, q_size, n_workers);
 
   // Create a vector to store the joint positions
@@ -76,6 +75,7 @@ auto main() -> int
       for (std::size_t i = 0; i < joint_positions.size(); ++i) {
         std::cout << "Joint " << i + 1 << " position: " << joint_positions[i] << "\n";
       }
+      std::cout << "=========================\n";
     }
 
     std::this_thread::sleep_for(std::chrono::milliseconds(100));

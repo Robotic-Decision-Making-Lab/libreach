@@ -31,14 +31,14 @@
 #include "libreach/packet_id.hpp"
 #include "libreach/udp_driver.hpp"
 
-/// This example provides a minimal demonstration of how to use the serial driver to communicate with a Bravo 7.
+/// This example demonstrates how to use the UDP driver to communicate with a Bravo 7 manipulator.
 auto main() -> int
 {
   // Below are the default network connection parameters for the Bravo 7
   const std::string ip_address = "192.168.2.3";
   const std::uint16_t port = 6789;
 
-  // Create a new UDP driver for the Bravo 7
+  // Create a new UDP driver for the Bravo 7; connection will be attempted on construction
   libreach::UdpDriver driver(ip_address, port);
 
   // Register a callback for the POSITION packet
