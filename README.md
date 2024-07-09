@@ -13,6 +13,21 @@ the implemented [examples](https://github.com/Robotic-Decision-Making-Lab/librea
 libreach depends on [Boost](https://www.boost.org/). Please verify that Boost
 has been installed prior to installing this project.
 
+## Installation
+
+To install libreach, first build the library using CMake
+
+```bash
+cmake -S . -B build && \
+cmake --build build
+```
+
+Then, install the generated binary tree
+
+```bash
+cmake --install build
+```
+
 ## Getting help
 
 If you have questions regarding usage of libreach or regarding contributing to

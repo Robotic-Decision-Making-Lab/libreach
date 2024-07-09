@@ -10,12 +10,16 @@ repos:
     -   id: clang-format
         types_or: [c++, c]
 
+  - repo: https://github.com/BlankSpruce/gersemi
+    rev: 0.13.5
+    hooks:
+    - id: gersemi
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
-      - id: check-json
       - id: check-yaml
       - id: check-xml
       - id: check-merge-conflict
