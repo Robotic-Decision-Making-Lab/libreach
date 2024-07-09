@@ -54,7 +54,7 @@ public:
 
 protected:
   /// Start polling the connection; this should be called in the constructor of a derived class after connection.
-  auto start_polling_connection(std::uint16_t max_bytes_to_read = 32) -> void;
+  auto start_polling_connection(std::uint16_t max_bytes_to_read) -> void;
 
   /// Shutdown the client; this should be called in the destructor of a derived class before the connection is closed.
   auto shutdown_client() -> void;
@@ -67,13 +67,13 @@ private:
   };
 
   /// Configure the heartbeat messages sent by the robot.
-  auto enable_heartbeat(unsigned int frequency) const -> void;
+  auto enable_heartbeat(std::uint8_t frequency) const -> void;
 
   /// Disable the heartbeat message.
   auto disable_heartbeat() const -> void;
 
   /// Set the heartbeat frequency.
-  auto set_heartbeat_rate(unsigned int frequency) const -> void;
+  auto set_heartbeat_rate(std::uint8_t frequency) const -> void;
 
   /// Set the timestamp that the last heartbeat was received.
   auto set_last_heartbeat(std::chrono::time_point<std::chrono::steady_clock> t) -> void;

@@ -82,7 +82,7 @@ auto Client::send_packet(const Packet & packet) const -> void
   }
 }
 
-auto Client::enable_heartbeat(unsigned int frequency) const -> void
+auto Client::enable_heartbeat(std::uint8_t frequency) const -> void
 {
   // Request the model number as the heartbeat because there isn't an official heartbeat message
   send_packet(Packet(PacketId::HEARTBEAT_SET, 0xFF, {static_cast<std::uint8_t>(PacketId::MODEL_NUMBER)}));
@@ -91,9 +91,9 @@ auto Client::enable_heartbeat(unsigned int frequency) const -> void
 
 auto Client::disable_heartbeat() const -> void { set_heartbeat_rate(0); }
 
-auto Client::set_heartbeat_rate(unsigned int frequency) const -> void
+auto Client::set_heartbeat_rate(std::uint8_t frequency) const -> void
 {
-  send_packet(Packet(PacketId::HEARTBEAT_FREQUENCY, 0xFF, {static_cast<std::uint8_t>(frequency)}));
+  send_packet(Packet(PacketId::HEARTBEAT_FREQUENCY, 0xFF, {frequency}));
 }
 
 auto Client::set_last_heartbeat(std::chrono::time_point<std::chrono::steady_clock> t) -> void

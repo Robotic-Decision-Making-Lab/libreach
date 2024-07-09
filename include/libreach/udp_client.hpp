@@ -41,12 +41,18 @@ namespace libreach::protocol
 class UdpClient : public Client
 {
 public:
-  /// Create a new UDP client using an IP address, port, a packet callback, and a session timeout.
+  /// Create a new UDP client using an
+  /// - IP address,
+  /// - port,
+  /// - packet callback,
+  /// - session timeout,
+  /// - and a maximum number of bytes to read on each poll.
   UdpClient(
     const std::string & addr,
     std::uint16_t port,
     std::function<void(const std::vector<Packet> &)> && callback,
-    std::chrono::seconds session_timeout);
+    std::chrono::seconds session_timeout,
+    std::uint16_t max_bytes_to_read = 64);
 
   ~UdpClient() override;
 

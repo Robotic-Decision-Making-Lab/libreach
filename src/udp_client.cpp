@@ -38,7 +38,8 @@ UdpClient::UdpClient(
   const std::string & addr,
   std::uint16_t port,
   std::function<void(const std::vector<Packet> &)> && callback,
-  std::chrono::seconds session_timeout)
+  std::chrono::seconds session_timeout,
+  std::uint16_t max_bytes_to_read)
 : Client(std::forward<std::function<void(const std::vector<Packet> &)>>(callback), session_timeout)
 {
   socket_ = socket(AF_INET, SOCK_DGRAM, 0);
@@ -60,7 +61,7 @@ UdpClient::UdpClient(
     throw std::runtime_error("Failed to connect to UDP socket");
   }
 
-  start_polling_connection();
+  start_polling_connection(max_bytes_to_read);
 }
 
 UdpClient::~UdpClient()

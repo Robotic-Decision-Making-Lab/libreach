@@ -37,11 +37,16 @@ namespace libreach::protocol
 class SerialClient : public Client
 {
 public:
-  /// Create a new serial client given a serial port, packet callback, and a session timeout.
+  /// Create a new serial client given a
+  /// - serial port,
+  /// - packet callback,
+  /// - session timeout,
+  /// - and maximum number of bytes to read on each poll.
   explicit SerialClient(
     const std::string & port,
     std::function<void(const std::vector<Packet> &)> && callback,
-    std::chrono::seconds session_timeout);
+    std::chrono::seconds session_timeout,
+    std::uint16_t max_bytes_to_read = 32);
 
   ~SerialClient() override;
 

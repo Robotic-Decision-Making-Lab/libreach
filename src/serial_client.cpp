@@ -39,7 +39,8 @@ namespace libreach::protocol
 SerialClient::SerialClient(
   const std::string & port,
   std::function<void(const std::vector<Packet> &)> && callback,
-  std::chrono::seconds session_timeout)
+  std::chrono::seconds session_timeout,
+  std::uint16_t max_bytes_to_read)
 : Client(std::forward<std::function<void(const std::vector<Packet> &)>>(callback), session_timeout)
 {
   if (port.empty()) {
@@ -82,17 +83,15 @@ SerialClient::SerialClient(
   tty.c_oflag &= ~OPOST;  // Disable output post-processing
   tty.c_oflag &= ~ONLCR;  // Disable conversion of newline to carriage return
 
-  const std::uint16_t max_bytes = 32;
-
-  tty.c_cc[VTIME] = 1;         // Set the timeout to 0.1s
-  tty.c_cc[VMIN] = max_bytes;  // Read 32 bytes at a time
+  tty.c_cc[VTIME] = 1;  // Set the timeout to 0.1s
+  tty.c_cc[VMIN] = max_bytes_to_read;
 
   // Save the configurations
   if (tcsetattr(handle_, TCSANOW, &tty) != 0) {
     throw std::runtime_error("Unable to save the terminal configurations.");
   }
 
-  start_polling_connection(max_bytes);
+  start_polling_connection(max_bytes_to_read);
 }
 
 SerialClient::~SerialClient()
