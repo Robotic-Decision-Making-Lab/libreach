@@ -40,8 +40,8 @@ auto main() -> int
   // Create a new serial driver for the Alpha 5
   const libreach::SerialDriver driver(serial_port);
 
-  // Set the desired position for joint A (rad)
-  const auto joint_a = static_cast<std::uint8_t>(libreach::Alpha5DeviceId::JOINT_A);
+  // Set the desired position for joint E (rad)
+  const auto joint_a = static_cast<std::uint8_t>(libreach::Alpha5DeviceId::JOINT_E);
 
   // 1. Helper functions have been provided to execute a variety of command commands such as setting the position
   const float desired_position = 0.53;
