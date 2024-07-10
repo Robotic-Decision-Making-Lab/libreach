@@ -33,24 +33,24 @@ namespace libreach
 /// Reach Alpha 5 device IDs.
 enum class Alpha5DeviceId : std::uint8_t
 {
-  END_EFFECTOR = 0x01,
-  JOINT_D = 0x02,
+  JOINT_A = 0x01,
+  JOINT_B = 0x02,
   JOINT_C = 0x03,
-  JOINT_B = 0x04,
-  JOINT_A = 0x05,
+  JOINT_D = 0x04,
+  JOINT_E = 0x05,
   ALL_JOINTS = 0xFF,
 };
 
 /// Reach Bravo 7 device IDs.
 enum class Bravo7DeviceId : std::uint8_t
 {
-  END_EFFECTOR = 0x01,
-  JOINT_F = 0x02,
-  JOINT_E = 0x03,
+  JOINT_A = 0x01,
+  JOINT_B = 0x02,
+  JOINT_C = 0x03,
   JOINT_D = 0x04,
-  JOINT_C = 0x05,
-  JOINT_B = 0x06,
-  JOINT_A = 0x07,
+  JOINT_E = 0x05,
+  JOINT_F = 0x06,
+  JOINT_G = 0x07,
   ALL_JOINTS = 0xFF,
   FORCE_TORQUE_SENSOR = 0x0D,
 };
