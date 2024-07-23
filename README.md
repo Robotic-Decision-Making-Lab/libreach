@@ -15,10 +15,6 @@ has been installed prior to installing this project.
 
 ## Installation
 
-> :warning: For ROS 2 installations, please refer to the installation instructions
-> provided on the [ros2](https://github.com/Robotic-Decision-Making-Lab/libreach/tree/ros2)
-> branch.
-
 To install libreach, first build the library using CMake
 
 ```bash
@@ -31,6 +27,10 @@ Then, install the generated binary tree
 ```bash
 cmake --install build
 ```
+
+> :warning: For ROS 2 installations, please refer to the installation instructions
+> provided on the [ros2](https://github.com/Robotic-Decision-Making-Lab/libreach/tree/ros2)
+> branch.
 
 ## Getting help
 
