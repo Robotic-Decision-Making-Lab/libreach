@@ -46,7 +46,7 @@ public:
   ///   - a session timeout for heartbeat monitoring.
   explicit UdpDriver(
     const std::string & addr,
-    const std::uint16_t port,
+    std::uint16_t port,
     std::size_t q_size = 100,
     std::size_t n_workers = 1,
     std::chrono::seconds session_timeout = std::chrono::seconds(3));

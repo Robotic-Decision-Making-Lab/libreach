@@ -8,24 +8,25 @@ the implemented [examples](https://github.com/Robotic-Decision-Making-Lab/librea
 > Please refer to the [Reach Robotics SDK](https://github.com/Reach-Robotics/reach_robotics_sdk/tree/master)
 > for all official software.
 
-## Dependencies
-
-libreach depends on [Boost](https://www.boost.org/). Please verify that Boost
-has been installed prior to installing this project.
-
 ## Installation
 
-To install libreach, first build the library using CMake
+To install libreach, first clone the `ros2` branch of the repository to the
+`src/` directory of your ROS 2 workspace
 
 ```bash
-cmake -S . -B build && \
-cmake --build build
+git clone -b ros2 git@github.com:Robotic-Decision-Making-Lab/libreach.git
 ```
 
-Then, install the generated binary tree
+Then install the project dependencies using rosdep
 
 ```bash
-cmake --install build
+rosdep install --from paths src -y --ignore-src
+```
+
+Finally, build the package using colcon
+
+```bash
+colcon build --packages-select libreach
 ```
 
 ## Getting help

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(
     libreach
-    VERSION 0.1.1
+    VERSION 0.1.2
     LANGUAGES CXX
     DESCRIPTION "C++ library used to communicate with Reach Robotics devices"
 )
@@ -13,6 +13,7 @@ endif()
 include(GNUInstallDirs)
 
 find_package(Boost REQUIRED COMPONENTS system)
+find_package(ament_cmake REQUIRED)
 
 add_library(libreach SHARED)
 target_sources(
@@ -69,23 +70,6 @@ install(
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/libreachConfigVersion.cmake"
-    VERSION ${PROJECT_VERSION}
-    COMPATIBILITY AnyNewerVersion
-)
+ament_export_targets(libreachTargets HAS_LIBRARY_TARGET)
 
-install(
-    EXPORT libreachTargets
-    FILE libreachTargets.cmake
-    NAMESPACE libreach::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libreach
-)
-
-install(
-    FILES
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/libreachConfig.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/libreachConfigVersion.cmake"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/libreach"
-)
+ament_package()

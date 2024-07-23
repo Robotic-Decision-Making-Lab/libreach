@@ -4,19 +4,25 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - ros2
   workflow_dispatch:
 
 jobs:
   pre-commit:
     name: CI
     runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        env:
+          - ROS_DISTRO: rolling
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install build dependencies
-        run: sudo apt-get install cmake libboost-all-dev
-
-      - name: Build project
-        run: cmake -S . -B build && cmake --build build
+      - name: Run ROS Industrial CI
+        uses: ros-industrial/industrial_ci@master
+        env:
+          ROS_DISTRO: ${{ matrix.env.ROS_DISTRO }}
+          CXXFLAGS: -Wall -Wextra -Wpedantic
+          CLANG_TIDY: true
