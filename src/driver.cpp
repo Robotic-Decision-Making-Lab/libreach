@@ -161,7 +161,7 @@ auto ReachDriver::request(const std::vector<PacketId> & packet_ids, std::uint8_t
   send_packet(PacketId::REQUEST, device_id, request_types);
 }
 
-auto ReachDriver::request_at_rate(const PacketId packet_id, std::uint8_t device_id, std::chrono::milliseconds rate)
+auto ReachDriver::request_at_rate(PacketId packet_id, std::uint8_t device_id, std::chrono::milliseconds rate)
   const -> void
 {
   {

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(
     libreach
-    VERSION 0.1.1
+    VERSION 0.1.2
     LANGUAGES CXX
     DESCRIPTION "C++ library used to communicate with Reach Robotics devices"
 )
