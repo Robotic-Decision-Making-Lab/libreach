@@ -87,7 +87,7 @@ public:
   auto request(const std::vector<PacketId> & packet_ids, std::uint8_t device_id) const -> void;
 
   /// Request a packet from the specified device at some rate.
-  auto request_at_rate(const PacketId packet_id, std::uint8_t device_id, std::chrono::milliseconds rate) const -> void;
+  auto request_at_rate(PacketId packet_id, std::uint8_t device_id, std::chrono::milliseconds rate) const -> void;
 
   /// Request up to 10 packets from the specified device at some rate.
   auto request_at_rate(const std::vector<PacketId> & packet_ids, std::uint8_t device_id, std::chrono::milliseconds rate)
@@ -116,8 +116,8 @@ protected:
 private:
   struct Request
   {
-    Request(const Packet & packet, std::chrono::milliseconds rate)
-    : packet(packet),
+    Request(Packet packet, std::chrono::milliseconds rate)
+    : packet(std::move(packet)),
       rate(rate),
       next_request(std::chrono::steady_clock::now())
     {
