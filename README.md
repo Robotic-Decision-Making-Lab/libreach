@@ -1,7 +1,9 @@
 # libreach
 
 libreach is a C++ library designed to interface with [Reach Robotics](https://reachrobotics.com/)
-devices. Get started with libreach by installing the project or by exploring
+devices. Get started with libreach by [installing](#installation) the project
+(refer to the [ros2](https://github.com/Robotic-Decision-Making-Lab/libreach/tree/ros2)
+branch for ROS 2-supported installation) or by exploring
 the implemented [examples](https://github.com/Robotic-Decision-Making-Lab/libreach/tree/main/examples).
 
 > :warning: This project is not affiliated with or maintained by Reach Robotics.
@@ -27,10 +29,6 @@ Then, install the generated binary tree
 ```bash
 cmake --install build
 ```
-
-> :warning: For ROS 2 installations, please refer to the installation instructions
-> provided on the [ros2](https://github.com/Robotic-Decision-Making-Lab/libreach/tree/ros2)
-> branch.
 
 ## Getting help
 

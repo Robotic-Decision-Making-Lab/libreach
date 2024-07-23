@@ -161,8 +161,8 @@ auto ReachDriver::request(const std::vector<PacketId> & packet_ids, std::uint8_t
   send_packet(PacketId::REQUEST, device_id, request_types);
 }
 
-auto ReachDriver::request_at_rate(PacketId packet_id, std::uint8_t device_id, std::chrono::milliseconds rate)
-  const -> void
+auto ReachDriver::request_at_rate(PacketId packet_id, std::uint8_t device_id, std::chrono::milliseconds rate) const
+  -> void
 {
   {
     const std::lock_guard<std::mutex> lock(request_lock_);
