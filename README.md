@@ -15,7 +15,7 @@ has been installed prior to installing this project.
 
 ## Installation
 
-> For ROS 2 installations, please refer to the installation instructions
+> :warning: For ROS 2 installations, please refer to the installation instructions
 > provided on the [ros2](https://github.com/Robotic-Decision-Making-Lab/libreach/tree/ros2)
 > branch.
 
