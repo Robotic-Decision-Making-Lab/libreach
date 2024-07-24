@@ -41,8 +41,6 @@ target_compile_features(libreach PUBLIC cxx_std_20)
 target_link_libraries(libreach PUBLIC Boost::boost PRIVATE Boost::system)
 set_target_properties(libreach PROPERTIES PREFIX "")
 
-ament_target_dependencies(libreach PUBLIC Boost)
-
 set(EXAMPLES
     alpha5_example
     bravo7_example
