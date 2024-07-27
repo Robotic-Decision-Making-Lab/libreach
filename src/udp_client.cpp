@@ -29,6 +29,7 @@
 #include <unistd.h>
 
 #include <iostream>
+#include <ranges>
 #include <stdexcept>
 
 namespace libreach::protocol
@@ -79,7 +80,8 @@ auto UdpClient::read_bytes(std::deque<std::uint8_t> & buffer, std::size_t n_byte
 {
   std::vector<std::uint8_t> data(n_bytes);
   const ssize_t n_read = recv(socket_, data.data(), data.size(), 0);
-  buffer.insert(buffer.end(), data.begin(), data.begin() + n_read);
+  std::ranges::copy(data | std::views::take(n_read), std::back_inserter(buffer));
+
   return n_read;
 }
 

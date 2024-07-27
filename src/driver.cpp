@@ -26,6 +26,7 @@
 #include "libreach/driver.hpp"
 
 #include <iostream>
+#include <ranges>
 #include <stdexcept>
 
 namespace libreach
@@ -234,7 +235,7 @@ auto ReachDriver::receive_packets(const std::vector<Packet> & packets) -> void
 {
   {
     const std::lock_guard<std::mutex> lock(packets_lock_);
-    packets_.insert(packets_.end(), packets.begin(), packets.end());
+    std::ranges::copy(packets, std::back_inserter(packets_));
   }
   packets_cv_.notify_all();
 }
@@ -281,10 +282,9 @@ auto ReachDriver::process_requests() -> void
   }
 
   // Wait for the earliest request to be ready
-  request_cv_.wait_until(
-    lock, std::min_element(requests_.begin(), requests_.end(), [](const Request & a, const Request & b) {
-            return a.next_request < b.next_request;
-          })->next_request);
+  request_cv_.wait_until(lock, std::ranges::min_element(requests_, [](const Request & a, const Request & b) {
+                                 return a.next_request < b.next_request;
+                               })->next_request);
 }
 
 }  // namespace libreach
