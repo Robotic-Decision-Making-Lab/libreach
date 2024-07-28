@@ -31,6 +31,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <ranges>
 #include <stdexcept>
 
 namespace libreach::protocol
@@ -109,7 +110,8 @@ auto SerialClient::read_bytes(std::deque<std::uint8_t> & buffer, std::size_t n_b
 {
   std::vector<std::uint8_t> data(n_bytes);
   const ssize_t bytes_read = read(handle_, data.data(), n_bytes);
-  buffer.insert(buffer.end(), data.begin(), data.begin() + bytes_read);
+  std::ranges::copy(data | std::views::take(bytes_read), std::back_inserter(buffer));
+
   return bytes_read;
 }
 
