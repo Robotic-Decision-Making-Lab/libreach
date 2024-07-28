@@ -26,6 +26,7 @@
 #include "libreach/client.hpp"
 
 #include <iostream>
+#include <ranges>
 #include <sstream>
 #include <string>
 
@@ -129,16 +130,15 @@ auto Client::poll_connection(std::uint16_t max_bytes_to_read) -> void
       std::cout << "Failed to read from the robot; the connection was likely lost.\n";
     }
 
-    auto last_delim = std::find(buffer.rbegin(), buffer.rend(), PACKET_DELIMITER);
+    auto last_delim = std::ranges::find(buffer | std::views::reverse, PACKET_DELIMITER);
 
     if (last_delim != buffer.rend()) {
       try {
         const std::vector<Packet> packets = decode_packets({buffer.begin(), last_delim.base()});
 
         if (!packets.empty()) {
-          auto it = std::find_if(packets.begin(), packets.end(), [](const Packet & packet) {
-            return packet.packet_id() == PacketId::MODEL_NUMBER;
-          });
+          auto it = std::ranges::find_if(
+            packets, [](const Packet & packet) { return packet.packet_id() == PacketId::MODEL_NUMBER; });
 
           if (it != packets.end()) {
             set_last_heartbeat(std::chrono::steady_clock::now());
